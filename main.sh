@@ -1,10 +1,10 @@
 #!/usr/bin/env sh
 
 while true; do
-  curl_all=$(curl --silent -X GET -u 'hostmaster@appgyver.com:qQCURVPzYj41' -H "app-key: q0nticlef4vt3ifo666a1m1vkkv97z16" https://a$
+  curl_all=$() # curl gets all pingdom checks
   checks_result=$(echo $curl_all | grep -o "down" | wc -l)
 
-  curl_usetrace=$(curl --silent -X GET -u 'hostmaster@appgyver.com:qQCURVPzYj41' -H "app-key: q0nticlef4vt3ifo666a1m1vkkv97z16" http$
+  curl_usetrace=$() # curl gets only usetrace check
   usetrace_result=$(echo $curl_usetrace | grep -o "down" | wc -l)
 
   check_file_exists=$([ ! -f /www/cgi-bin/dummyFile.txt ] && echo "does not exist" || echo "exists" )
@@ -19,7 +19,7 @@ while true; do
     relay-exp -i 1 0
   fi
 
-  healthecks=$(curl --silent --header "X-Api-Key: WiUV-CaAto5_wUmhLU7ZmV_RlK2I7K_d" https://healthchecks.io/api/v1/checks/\?tag\=cus$
+  healthecks=$() # curl gets all healtheck checks
   healthchecks_down=$(echo $healthecks | grep "down")
 
   if [ "$healthecks_down" != "" ]; then
